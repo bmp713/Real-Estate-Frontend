@@ -1,0 +1,103 @@
+<div id="top" class='page details m-0 p-0'>
+    <div
+        class="top row justify-content-lg-center align-items-start"
+        style.background-image="linear-gradient(#0007,#0007), url('{{this.productInfo?.img}}')"
+    >
+        <a href="http://localhost:4200/products">
+            <img class="m-3" height="30" src="../assets/Zillow_Wordmark_Blue_RGB lrg.png">
+        </a><br>
+        <div class="mx-auto col-lg-5 text-center text-white m-5 p-5">
+            <div class="text-start">
+                <strong style="font-weight:700; font-size:32px">${{this.productInfo?.price}}</strong>
+                <h6><strong>{{this.productInfo?.name}}</strong></h6>
+                <p>{{this.productInfo?.description}}</p>
+                Property {{this.productInfo?.id}}<br><br>
+                <!-- <button style="width:50%" class="btn-white-outline">Learn more</button> -->
+                <a style="width:50%; font-size:14px" class="btn-white-outline text-center" routerLink="/" fragment="details">More Properties</a>
+
+            </div>
+        </div>
+        <!-- <div class="mx-auto col-lg-5 text-center text-white m-5 p-5">
+            <div class="text-center">
+                <img width="100%" src={{this.productInfo?.img}}>
+            </div>
+        </div> -->
+    </div>
+
+    <div id="details" class="row justify-content-center align-items-start p-5">
+        <h1>Details</h1>
+        <div class="col-lg-2 text-left">
+            <a routerLink='/products'><strong>< Back To Properties</strong></a>
+        </div>
+        <div class="col-lg-5 text-left">
+            <div class="row justify-content-lg-center align-items-start">
+              <img width="100%" src={{this.productInfo?.img}}>
+              <span style="font-size:10px; word-wrap: break-word;">{{this.productInfo?.img}}</span>
+            </div>
+        </div>
+        <div class="col-lg-5 text-left px-lg-5">
+            <div class="row justify-content-lg-center align-items-start px-lg-5">
+                <p>
+                <strong style="font-weight:700; font-size:32px">${{this.productInfo?.price}}
+                </strong><br>
+                <strong>{{this.productInfo?.name}}</strong><br><br>
+                {{this.productInfo?.description}}<br><br>
+
+                City<br>
+                <input
+                    #city city="city" type="text"
+                    value={{this.productInfo?.city}}
+                /><br>
+                Address<br>
+                <input
+                    #name name="name" type="text"
+                    value={{this.productInfo?.name}}
+                /><br>
+                Type<br>
+                <input
+                    #type required name="type" type="text"
+                    value={{this.productInfo?.type}}
+                /><br>
+                Rooms<br>
+                <input
+                    #color required maxlength="56" name="rooms" type="text"
+                    value={{this.productInfo?.rooms}}
+                /><br>
+                Price<br>
+                <input
+                    #price required name="price" type="text"
+                    value={{this.productInfo?.price}}
+                /><br>
+                Description<br>
+                <textarea
+                    #description name="description" type="textarea" rows="4"
+                    value={{this.productInfo?.description}}
+                > </textarea><br>
+                Image<br>
+                <input
+                    type="file"
+                    name="image"
+                    placeholder="Image"
+                    [(ngModel)]="image"
+                    (change)="fileSelected($event)"
+                >
+                <!-- <img width="20%;" src="{{this.productInfo?.img}}"> -->
+                <br>
+                <button
+                    type="submit" class="submit"
+                    (click)="updateProduct(city.value, name.value, type.value, color.value, price.value, description.value, this.productInfo?.img)"
+                >Update</button><br>
+                <span *ngIf="this.error" style="color:red">{{this?.error}}<br></span>
+                <br>
+                <button
+                    class="submit-red"
+                    (click)="deleteProduct(this.productInfo.id)">Delete</button>
+                </p>
+                <a routerLink='/products'><strong>< Back To Properties</strong></a>
+            </div>
+      </div>
+    </div>
+</div>
+
+
+

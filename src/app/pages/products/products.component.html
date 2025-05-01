@@ -1,0 +1,237 @@
+<div class='page products' class="p-0 m-0">
+
+    <div id="top" class="top row justify-content-lg-start align-items-start">
+        <div class="col-lg-12 text-left">
+
+            <div class="row justify-content-lg-evenly align-items-center">
+                <div class="col-lg-12 text-left text-white">
+                    <a href="http://angular-real-estate.herokuapp.com">
+                        <img class="m-3" height="35" src="../assets/Zillow_Wordmark_Blue_RGB lrg.png">
+                    </a><br>
+                </div>
+                <div class="left mx-auto col-12 col-lg-6 text-center text-white py-5 px-lg-5">
+                    <div class="text-start px-5">
+                        <h1>Find, Tour, Own</h1><br>
+                        <p>Find your place with an immersive photo experience and the most listings, including things you won't find anywhere else.
+                        Zillow makes it easy to find the right loan, so you can get the home you want.
+                        </p>
+                        <button routerLink="/" fragment="properties" style="width:50%; font-size:15px" class="btn-white-outline">Properties</button>
+                    </div>
+                </div>
+                <div class="right mx-auto col-12 col-lg-6 text-left py-lg-5 px-lg-5">
+
+                    <div class="form-modal">
+                        <h2>Sign In</h2>
+                        <p>Log in with existing account or click sign up below.</p>
+                        <input
+                            #email name="email" type="text"
+                            placeholder="Username"
+                        /><br>
+                        <div class="eye-container">
+                            <input
+                                #password
+                                type="showPassword ? 'password' : 'text'"
+                                name="password"
+                                placeholder="Password"
+                        />
+                            <a class="btn-invisible">
+                                <img
+                                    id="eye" class="eye"
+                                    src="./assets/Icon-eye-closed.png"
+                                />
+                            </a>
+                        </div>
+                        <input class="btn-black" type="submit" value="Sign In">
+
+                        <div class="row justify-content-lg-center align-items-stretch">
+                            <div class="col-lg-6 text-start text-white">
+                                <p class="mx-2">Don't have an account?
+                                    <a routerLink='/signup' class="">
+                                        <p class="text-white"><strong> Sign Up</strong></p>
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="col-lg-6 text-center text-white">
+                                <a routerLink='/reset' class="float-lg-end">
+                                    <p class="text-white"><strong>Forgot Password?</strong></p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-lg-center align-items-stretch">
+                            <div class="col-lg-6 text-center">
+                                <span><button class=".app-btn">
+                                    <img width='50' src="../assets/Icon-facebook.png" alt="new"/>
+                                </button></span>
+                                <span><button class=".app-btn">
+                                    <img width='50' src="../assets/Icon-google.png" alt="new"/>
+                                </button></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="font-size:12px" class="row justify-content-lg-center align-items-start p-5">
+        <div class="filters col-lg-4 text-left p-lg-5">
+            <h2>Search</h2>
+            <input
+                [(ngModel)]="city"
+                placeholder="By City"/>
+            <br>
+            <input
+                [(ngModel)]="type"
+                placeholder="By Type"/>
+            <br>
+            <input
+                [(ngModel)]="rooms"
+                placeholder="By Rooms"/>
+            <br>
+            <button
+                class="btn-black m-1 my-3"
+                (click)="clearSearch()">Clear
+            </button>
+            <br><br>
+
+            <!-- <form #property="ngForm" (ngSubmit)="createProperty()"> -->
+            <form>
+                <h2>Property</h2>
+                <input
+                    type="text"
+                    name="address"
+                    placeholder="Address"
+                    [(ngModel)]="address"
+                >
+                <input
+                    type="text"
+                    name="location"
+                    placeholder="City"
+                    [(ngModel)]="city"
+                >
+                <input
+                    type="text"
+                    name="price"
+                    placeholder="Price"
+                    [(ngModel)]="price"
+                >
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Description"
+                    [(ngModel)]="description"
+                >
+                    <input
+                    type="text"
+                    name="rooms"
+                    placeholder="Rooms"
+                    [(ngModel)]="rooms"
+                >
+
+                <input
+                    type="text"
+                    name="type"
+                    placeholder="Type"
+                    [(ngModel)]="type"
+                >
+                <input
+                    type="file"
+                    name="image"
+                    placeholder="Image"
+                    [(ngModel)]="image"
+                    (change)="fileSelected($event)"
+                >
+
+                <img class="mx-2" width="50%" src={{this.upload}}>
+
+                <input class="btn-black" type="submit" value="Create"
+                    (click)="createProperty( address.value, city.value, price.value, description.value, rooms.value, type.value, image.value)"
+                >
+            </form>
+        </div>
+
+
+        <div id="properties" class="productList my-5 col-lg-8 text-left ">
+            <div class="row justify-content-center align-items-end">
+                <button
+                    class="text-center"
+                    style="width:45%;"
+                    (click)="readProducts()"
+                >Newest
+                </button>
+                <button
+                    class="text-center"
+                    style="width:45%;"
+                    (click)="readProductsReverse()"
+                >Oldest
+                </button>
+                <ng-container
+                    *ngFor="let product of products; let i = index"
+                >
+                    <div
+                        *ngIf="this.product.city === city || this.product.rooms === rooms || this.product.type === type"
+                        class="product col-lg-5 text-left"
+                    >
+                        <a routerLink="/details/{{this.product.id}}">
+                            <img width="100%" src={{this.product?.img}}>
+                        </a>
+                        <strong style="font-weight:700; font-size:32px">${{this.product.price}}</strong><br>
+                        <h5>{{this.product.name}}</h5>
+                        <p>
+                        {{this.product.description}}<br><br>
+                        City: {{this.product.city}}<br>
+                        Type: {{this.product.type}}<br>
+                        Rooms: {{this.product.rooms}}<br>
+                        </p>
+                        <a routerLink="/details/{{this.product.id}}"><strong class="text-decoration-underline">View Property ></strong></a>
+                    </div>
+                </ng-container><br><br>
+            </div>
+
+            <div class="row justify-content-center align-items-start">
+                <ng-container
+                    *ngFor="let product of products; let i = index"
+                >
+                    <div
+                        *ngIf="i < this.productsCount && !city && !rooms && !type"
+                        class="product col-lg-5 text-left"
+                    >
+                        <a routerLink="/details/{{this.product.id}}">
+                            <img width="100%" src={{this.product?.img}}>
+                        </a>
+                        <strong style="font-weight:700; font-size:32px">${{this.product.price}}</strong><br>
+                        <h5>{{this.product.name}}</h5>
+                        <p style="font-weight:500; font-size:14px">
+                        {{this.product.description}}<br><br>
+                        City: {{this.product.city}}<br>
+                        Type: {{this.product.type}}<br>
+                        Rooms: {{this.product.rooms}}<br>
+                        </p>
+                        <a routerLink="/details/{{this.product.id}}"><strong class="text-decoration-underline">View Property ></strong></a>
+                    </div>
+                </ng-container><br><br>
+            </div>
+
+            <div class="row justify-content-lg-center align-items-start">
+                <button
+                    class="text-center"
+                    style="width:275px; padding: 7px; color:#000f; font-weight:700; border: 2px solid #0007; background:#0000"
+                    (click)="loadMore()">Load more...
+                </button><br>
+                <button
+                    class="text-center"
+                    style="width:275px; padding: 7px; color:#000f; font-weight:700; border: 2px solid #0000"
+                    (click)="showAll()">Show all
+            </button><br>
+            </div>
+            <p class="my-2 text-center"style="font-size:12px">
+                Showing {{this.productsCount}}
+            </p>
+            </div>
+        </div>
+</div>
+
+
+
