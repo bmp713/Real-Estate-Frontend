@@ -110,7 +110,6 @@ export class ProductsComponent implements OnInit {
         } catch (error) { }
     }
 
-
     // Deletes product by id in Rest API
     deleteProduct = async (id: string) => {
         try {
