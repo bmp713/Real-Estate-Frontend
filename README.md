@@ -1,1 +1,1 @@
-https://real-estate-front.up.railway.app
+https://angular-real-estate-frontend.up.railway.app
