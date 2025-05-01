@@ -79,7 +79,7 @@ export class ProductsComponent implements OnInit {
 
     readProducts = async () => {
         try {
-            await fetch("https://real-estate-back.up.railway.app/read")
+            await fetch("https://real-estate-backend.up.railway.app/read")
                 // await fetch("http://localhost:4000/read")
                 .then(response => response.json())
                 .then(data => {
@@ -96,7 +96,7 @@ export class ProductsComponent implements OnInit {
 
     readProductsReverse = async () => {
         try {
-            await fetch("https://real-estate-back.up.railway.app/read")
+            await fetch("https://real-estate-backend.up.railway.app/read")
                 // await fetch("http://localhost:4000/read")
                 .then(response => response.json())
                 .then(data => {
@@ -113,7 +113,7 @@ export class ProductsComponent implements OnInit {
     // Deletes product by id in Rest API
     deleteProduct = async (id: string) => {
         try {
-            await fetch(`https://real-estate-back.up.railway.app/delete/${id}`, {
+            await fetch(`https://real-estate-backend.up.railway.app/delete/${id}`, {
                 // await fetch(`http://localhost:4000/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
@@ -151,7 +151,7 @@ export class ProductsComponent implements OnInit {
         try {
             this.id = Math.floor(Math.random() * 10000000000000000);
 
-            await fetch(`https://real-estate-back.up.railway.app/create`, {
+            await fetch(`https://real-estate-backend.up.railway.app/create`, {
                 // await fetch(`http://localhost:4000/create`, {
                 method: 'POST',
                 headers: {
@@ -228,7 +228,7 @@ export class ProductsComponent implements OnInit {
 
         try {
 
-            await fetch(`https://real-estate-back.up.railway.app/upload`, {
+            await fetch(`https://real-estate-backend.up.railway.app/upload`, {
                 // await fetch(`http://localhost:4000/upload`, {
                 method: 'POST',
                 body: formData
