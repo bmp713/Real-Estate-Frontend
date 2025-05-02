@@ -86,8 +86,6 @@ export class ProductsComponent implements OnInit {
                 .then(data => {
                     // this.products = data;
                     this.products = data.reverse();
-
-
                     // sort products here
 
                     console.log("products.json => ", this.products)
