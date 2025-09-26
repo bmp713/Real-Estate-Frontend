@@ -3,6 +3,9 @@ https://real-estate-app.up.railway.app
 
 Real Estate Platform for uploading and managing properties. 
 
+Login with user as "demo@yahoo.com" and password as "Welcome123"
+Or create a new account
+
 ### Technologies
 Angular frontend using Node authentication, Express REST API, and MongoDB Atlas for database
 
