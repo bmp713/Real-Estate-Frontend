@@ -4,7 +4,7 @@ https://real-estate-app.up.railway.app
 Real Estate Platform for uploading and managing properties. 
 
 ### Technologies
-Angular frontend using Node authentication, Express RESTS API, and MongoDB Atlas for database
+Angular frontend using Node authentication, Express REST API, and MongoDB Atlas for database
 
 ### Features
 Create new accounts, create and edit real estate listings, search with filters 
